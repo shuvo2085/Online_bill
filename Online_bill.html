@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1{
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <h2> Online Billing </h2>
+        <div class="part1">
+            <fieldset>
+                <legend>Personal Information</legend>
+                Full Name: <input type="text" id="name"> <br/>
+
+                Your Email: <input type="text" id="email">
+            </fieldset>
+        </div>
+
+
+        <div class="part2">
+            <fieldset>
+                <legend>Your Orders</legend>
+                Ball (Rs. 50): <input type="text" id="ball"> <br/>
+                Pen (Rs. 10): <input type="text" id="pen"><br/>
+                Book (Rs. 100): <input type="text" id="book"><br/>
+                Pencil (Rs. 5): <input type="text" id="pencil"><br/>
+ </fieldset>
+        </div>
+        
+    </div>
+
+    <div class="container">
+        <fieldset>
+            <legend>Your Bill</legend>
+            <h3>Your Name:<span id="name2"></span></h3>
+            <h3>Email: <span id="email2"></span></h3>
+            <table border="1" >
+                <thead>
+                    <tr><th>Menu</th><th>Price</th><th>Quantity</th><th>Amout</th></tr>
+                </thead>
+                <tbody id="bill">
+                    
+                </tbody>
+
+                
+
+            </table>
+            </fieldset>
+            <h1>Total Amout: Rs. <span id="amount">0</span></h1>
+            
+    </div>
+</div>
+
+
+<script>
+var Ball = 50, Pen = 10, Book = 100, Pencil = 5;
+var ball_q=0, pen_q=0, book_q=0, pencil_q=0;
+var name = "", email="";
+var ballBill="",penBill="",bookBill="",pencilBill="";
+var total_amount=0;
+document.getElementById("name").addEventListener("keyup",function(){
+    // name = document.getElementById("name").value;
+    
+    document.getElementById("name2").innerHTML=this.value;
+});
+
+document.getElementById("email").addEventListener("keyup",function(){
+    // name = document.getElementById("name").value;
+    
+    document.getElementById("email2").innerHTML=this.value;
+});
+
+
+
+document.getElementById("ball").addEventListener("keyup",function(){
+if(this.value==""||this.value==0){
+    ballBill="";
+    ball_q=0;
+    showBill();
+}else{
+    ball_q=this.value;
+    ballBill="<tr><td>Ball</td><td>Rs. "+Ball+"</td><td>"+ball_q+"</td><td>"+Ball+"x"+ball_q+" = "+Ball*ball_q+"</td></tr>";
+    showBill();
+
+}
+});
+
+document.getElementById("pen").addEventListener("keyup",function(){
+if(this.value==""||this.value==0){
+    penBill="";
+    pen_q=0;
+    showBill();
+
+}else{
+    pen_q=this.value;
+    penBill="<tr><td>Pen</td><td>Rs. "+Pen+"</td><td>"+pen_q+"</td><td>"+Pen+"x"+pen_q+" = "+Pen*pen_q+"</td></tr>";
+    showBill();
+}
+});
+
+document.getElementById("book").addEventListener("keyup",function(){
+if(this.value==""||this.value==0)
+{
+    bookBill="";
+    book_q=0;
+    showBill();
+
+}else{
+    book_q=this.value;
+    bookBill="<tr><td>Book</td><td>Rs. "+Book+"</td><td>"+book_q+"</td><td>"+Book+"x"+book_q+" = "+Book*book_q+"</td></tr>";
+    showBill();
+}
+});
+document.getElementById("pencil").addEventListener("keyup",function(){
+if(this.value==""||this.value==0){
+    pencilBill="";
+    pencil_q=0;
+    showBill();
+
+}else{
+    pencil_q=this.value;
+    pencilBill="<tr><td>Pencil</td><td>Rs. "+Pencil+"</td><td>"+pencil_q+"</td><td>"+Pencil+"x"+pencil_q+" = "+Pencil*pencil_q+"</td></tr>";
+    showBill();
+}
+});
+
+
+function showBill(){
+    document.getElementById("bill").innerHTML=ballBill+penBill+bookBill+pencilBill; //table statement
+    document.getElementById("amount").innerHTML = Ball*ball_q+Pen*pen_q+Book*book_q+Pencil*pencil_q; // total amount
+}
+</script>
+</body>
+</html>
